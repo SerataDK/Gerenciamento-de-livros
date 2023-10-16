@@ -1,0 +1,31 @@
+-- Criação do banco de dados
+CREATE DATABASE BibliotecaDB;
+
+-- Usar o banco de dados
+USE BibliotecaDB;
+
+-- Tabela para usuários
+CREATE TABLE Usuarios (
+    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL
+);
+
+-- Tabela para livros
+CREATE TABLE Livros (
+    LivroID INT PRIMARY KEY AUTO_INCREMENT,
+    Titulo VARCHAR(255) NOT NULL,
+    Autor VARCHAR(255) NOT NULL,
+    AnoPublicacao INT,
+    UserID INT,
+    FOREIGN KEY (UserID) REFERENCES Usuarios(UserID)
+);
+
+-- Tabela para administradores
+CREATE TABLE Administradores (
+    AdminID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL UNIQUE,
+    Senha VARCHAR(255) NOT NULL
+);
